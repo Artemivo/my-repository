@@ -28,7 +28,7 @@ function AboutComponent() {
       <div className="about-block_constructor-block">
         <h2 className="about-block_constructor-title">CRACKER CONSTRUCTOR</h2>
         <p className="about-block_constructor-current">
-          CURRENT-VALUE: {price} &#8364;
+          CURRENT-VALUE: {Math.round(price*100)/100} &#8364;
         </p>
         <AboutConstructor />
       </div>

@@ -25,7 +25,7 @@ function HeaderComponent() {
           <p className="header-cart_logo-count">{products.length}</p>
         </div>
         <p className="header-cart_total-price">
-          <span className="header-cart_total-price_text">TOTAL :</span> {price}{" "}
+          <span className="header-cart_total-price_text">TOTAL :</span> {Math.round(price*100)/100}{" "}
           &#8364;
         </p>
         <div className="header-cart_details-block">
@@ -59,7 +59,7 @@ function HeaderComponent() {
               </ul>
               <div className="cart-total">
                 <p className="cart-item_list-amount_info-item">
-                  TOTAL : {price} &#8364;
+                  TOTAL : {Math.round(price*100)/100} &#8364;
                 </p>
                 <button className="cart-checkout-button">CHECKOUT</button>
               </div>

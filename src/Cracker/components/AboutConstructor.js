@@ -14,7 +14,7 @@ function AboutConstructor() {
   const small = 10;
   const medium = 20;
   const large = 30;
-  // const price = 2;
+
   
   
   const [soybeanValue, setSoybeanValue] = useState(0);
