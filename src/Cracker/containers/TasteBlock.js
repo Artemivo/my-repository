@@ -1,12 +1,12 @@
-import React from 'react'
-import TasteComponent from '../components/TasteComponent'
+import React from "react";
+import TasteComponent from "../components/TasteComponent";
 
 function TasteBlock() {
-    return (
-        <div className="taste-it-block">
-            <TasteComponent/>
-        </div>
-    )
+  return (
+    <article className="taste-it-block">
+      <TasteComponent />
+    </article>
+  );
 }
 
-export default TasteBlock
+export default TasteBlock;

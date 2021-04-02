@@ -10,11 +10,11 @@ import { addProduct } from "../redux/actions/product";
 function AboutConstructor() {
   const dispatch = useDispatch();
 
-  let maximum = 100;
+  
   const small = 10;
   const medium = 20;
   const large = 30;
-
+  const max = 100;
   
   
   const [soybeanValue, setSoybeanValue] = useState(0);
@@ -24,37 +24,37 @@ function AboutConstructor() {
   const [visibleMenu, setVisibleMenu] = useState(false);
   const [buttonTitle, setButtonTitle] = useState("CHOOSE YOUR PACK");
   const [showButton, setShowButton] = useState(false)
-  useEffect(() => {
-    var val = maximum - (soybeanValue + sesameValue + wheatValue);
-    val >= 0 ? setCornValue(val) : setCornValue(0);
-  }, [soybeanValue, sesameValue, wheatValue]);
 
 
 
-  function slider(...sliders) {
-    var arr = [...sliders];
-    const newArr = [];
-    const object = {
-      soybean: 0,
-      sesame: 0,
-      wheat: 0,
-      corn: 0,
-    };
-    var sum = sliders.reduce((summ, el) => summ + el, 0);
-    for (var j = 0; j < sliders.length; j++) {
-      if (sliders[j] != sum) {
-        sliders[j] = Math.trunc((sliders[j] / sum).toFixed(4) * 100);
-        newArr.push(sliders[j]);
+ 
+  function getValues(soybean,sesame,wheat) { 
+    var constructorObj={
+        soybean: 0,
+        sesame: 0,
+        wheat: 0,
+        corn:0,
       }
-    }
-    var b = 0;
-    for (var key in object) {
-      object[key] = newArr[b];
-      ++b;
-    }
-    return object;
+      constructorObj.soybean = soybean
+      if(soybean<=max&&(soybean+sesame)<max){
+        constructorObj.sesame = sesame
+      }else{
+        constructorObj.sesame = max-soybean
+      }
+      if((soybean+sesame)<=max&&(soybean+sesame+wheat)<max){
+        constructorObj.wheat = wheat
+      }else{
+        constructorObj.wheat = max-(sesame+soybean)>0?max-(sesame+soybean):0
+      }
+      if((soybean+sesame+wheat)<max&&soybean!==0){
+        constructorObj.corn=max-(soybean+sesame+wheat)
+      }
+  
+  return constructorObj
   }
-  let objValues = slider(soybeanValue, sesameValue, wheatValue, cornValue);
+  
+  
+  let objValues = getValues(soybeanValue, sesameValue, wheatValue,cornValue);
 
   const onSub = (e) => {
     e.preventDefault();
@@ -87,6 +87,7 @@ function AboutConstructor() {
   };
   return (
     <div className="about-block_constructor-slider_list">
+      <section>
       <form onSubmit={(e) => onSub(e)}>
         <ul className="about-block_constructor-slider_list-ul">
           <li className="about-block_constructor-slider_list-item">
@@ -103,7 +104,6 @@ function AboutConstructor() {
               min="0"
               max="100"
               value={objValues.soybean}
-              nameProduct="soybean"
             />
             <span className="constructor-list-item_value">
               {objValues.soybean} %
@@ -124,7 +124,6 @@ function AboutConstructor() {
               min="0"
               max="100"
               value={objValues.sesame}
-              nameProduct="sesame"
               className="sesame"
             />
             <span className="constructor-list-item_value">
@@ -146,7 +145,6 @@ function AboutConstructor() {
               min="0"
               max="100"
               value={objValues.wheat}
-              nameProduct="wheat"
               className="wheat"
             />
             <span className="constructor-list-item_value">
@@ -161,12 +159,13 @@ function AboutConstructor() {
               className="constructor-slider_list-icon"
             ></img>
             <input
+            onChange={e=>setCornValue(+e.target.value)}
               type="range"
               min="0"
               max="100"
-              nameProduct="corn"
               value={objValues.corn ? objValues.corn : (objValues.corn = 0)}
               className="corn"
+              readOnly={objValues.corn ? objValues.corn : (objValues.corn = 0)}
             />
             <span className="constructor-list-item_value">
               {objValues.corn ? objValues.corn : (objValues.corn = 0)} %
@@ -213,10 +212,11 @@ function AboutConstructor() {
         </ul>
 
         <div onMouseEnter={()=>setShowButton(true)} className="constructor-slider_list-button-add">+
-       {showButton&& <button className="constructor-slider_list-button-text">ADD TO CART</button>}</div>
+       {showButton&& <button className="constructor-slider_list-button-text" onMouseOut={()=>setShowButton(false)}>ADD TO CART</button>}</div>
 
 
       </form>
+      </section>
     </div>
   );
 }

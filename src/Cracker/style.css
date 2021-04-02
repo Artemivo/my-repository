@@ -1,16 +1,46 @@
 @font-face {
-  src: url(./font/FredokaOne-Regular.ttf);
+  src: url(./font/FredokaOne-Regular.woff);
   font-family: "Fredoka-one";
 }
 
 @font-face {
-  src: url(./font/Kristi-Regular.ttf);
+  src: url(./font/Kristi-Regular.woff);
   font-family: "Kristi";
 }
 
 @font-face {
-  src: url(./font/Lato-Regular.ttf);
+  src: url(./font/Lato-Regular.woff);
   font-family: "Lato";
+}
+
+@font-face {
+  src: url(./font/fredokaone-regular.woff2);
+  font-family: "Fredoka-one-woff2";
+}
+
+@font-face {
+  src: url(./font/kristi-regular.woff2);
+  font-family: "Kristi-woff2";
+}
+
+@font-face {
+  src: url(./font/lato-regular.woff2);
+  font-family: "Lato-woff2";
+}
+
+@font-face {
+  src: url(./font/FredokaOne-Regular.ttf);
+  font-family: "Fredoka-one-ttf";
+}
+
+@font-face {
+  src: url(./font/Kristi-Regular.ttf);
+  font-family: "Kristi-ttf";
+}
+
+@font-face {
+  src: url(./font/Lato-Regular.ttf);
+  font-family: "Lato-ttf";
 }
 
 .wrapper {
@@ -39,11 +69,13 @@
   justify-content: space-around;
 }
 
-.header-logo {
+.header-logo_icon-link {
   position: absolute;
-  top: 20px;
+  top: 0;
+  bottom: 0;
+  right: 0;
   left: 0;
-  z-index: 1;
+  cursor: pointer;
 }
 
 .header-logo_text {
@@ -53,14 +85,14 @@
   line-height: 60px;
   color: #f7f7f7;
   font-weight: 400;
-  font-family: "Kristi", sans-serif;
+  font-family: "Kristi-woff2", "Kristi", "Kristi-ttf", sans-serif;
 }
 
 .header-logo_icon {
   font-size: 18px;
   color: #f7f7f7;
   font-weight: 400;
-  font-family: "Lato", sans-serif;
+  font-family: "Lato-woff2", "Lato", "Lato-ttf", sans-serif;
   position: absolute;
   top: 50px;
   left: 105px;
@@ -108,7 +140,7 @@
   font-size: 14px;
   color: #ffffff;
   font-weight: 700;
-  font-family: "Lato", sans-serif;
+  font-family: "Lato-woff2", "Lato", "Lato-ttf", sans-serif;
   cursor: pointer;
 }
 
@@ -145,6 +177,17 @@
   position: relative;
 }
 
+.nav-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-active {
+  padding: 45px 0;
+  background-color: rgba(51, 51, 51, 0.5);
+}
+
 .taste-it-block_nav {
   display: flex;
   justify-content: center;
@@ -153,25 +196,79 @@
   filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.12))
     drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.24));
   background-color: rgba(51, 51, 51, 0.5);
+  position: relative;
 }
 
 .taste-it-block_nav-list {
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 .taste-it-block_nav-list_item {
   display: inline-block;
   margin: 0;
   padding: 0;
+  padding-bottom: 15px;
   margin-right: 65px;
   list-style: none;
   font-size: 18px;
   color: #f7f7f7;
 
-  font-family: "Fredoka-one", sans-serif;
+  font-family: "Fredoka-one-woff2", "Fredoka-one", "Fredoka-one-ttf", sans-serif;
   cursor: pointer;
   position: relative;
+}
+
+.taste-it-block_nav-list_item-link {
+  text-decoration: none;
+  color: #f7f7f7;
+}
+
+.taste-it-block_nav-list_item-link:hover {
+  text-decoration: none;
+  color: #f7f7f7;
+}
+
+.check-out-form-block {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 15px;
+}
+
+.check-out-input-message {
+  outline: none;
+  max-width: 560px;
+  width: 100%;
+  resize: vertical;
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid #061e37;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06);
+  height: 150px;
+  overflow: hidden;
+  background-color: #fafafa;
+  margin-bottom: 30px;
+}
+.check-out-input {
+  outline: none;
+  margin-bottom: 20px;
+  max-width: 280px;
+  width: 100%;
+  resize: vertical;
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid #061e37;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  background-color: #fafafa;
+}
+
+.check-out-form {
+  max-width: 300px;
+  width: 100%;
 }
 
 .taste-it-block_nav-list :last-child {
@@ -185,9 +282,9 @@
   top: 30px;
   left: 0;
   width: 0;
-  height: 4px;
+  height: 3px;
   background-color: #ff4200;
-  transition: all 2s ease;
+  transition: width 2s ease;
 }
 
 .taste-it-block_nav-list_item:hover::after {
@@ -197,7 +294,7 @@
 .taste-it-block_header {
   padding: 0 80px 65px 0;
   max-width: 870px;
-  width: 100%;
+  width: 70%;
   min-height: 360px;
   background-color: rgba(131, 170, 117, 0.8);
   display: flex;
@@ -215,7 +312,7 @@
   font-size: 48px;
   letter-spacing: 2px;
   color: #f7f7f7;
-  font-family: "Fredoka-one", sans-serif;
+  font-family: "Fredoka-one-woff2", "Fredoka-one", "Fredoka-one-ttf", sans-serif;
   max-width: 640px;
   text-transform: uppercase;
   position: relative;
@@ -230,14 +327,16 @@
   font-size: 18px;
   color: #ffffff;
   font-weight: 400;
-  font-family: "Lato", sans-serif;
+  font-family: "Lato-woff2", "Lato", "Lato-ttf", sans-serif;
   line-height: 25px;
   text-align: right;
 }
 
 .taste-it-block_button {
+  outline: none;
   cursor: pointer;
-  padding: 22px 49px;
+  width: 260px;
+  height: 80px;
   border-radius: 40px;
   filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.12))
     drop-shadow(0px 6px 3px rgba(0, 0, 0, 0.24));
@@ -245,10 +344,26 @@
   border: 1px solid;
   font-size: 36px;
   color: #ffffff;
-  font-family: "Fredoka-one", sans-serif;
+  font-family: "Fredoka-one-woff2", "Fredoka-one", "Fredoka-one-ttf", sans-serif;
   position: relative;
   left: 60%;
   margin-bottom: 160px;
+}
+.taste-it-block_button:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
+  color: #ff4200;
+  background-color: #fff;
+}
+
+.nav-logo {
+  position: absolute;
+  bottom: 45px;
+  left: -20%;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .about-block {
@@ -264,6 +379,7 @@
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
 }
 
 .about-block_title {
@@ -274,7 +390,7 @@
   letter-spacing: 10px;
   color: #666666;
   font-weight: 400;
-  font-family: "Fredoka-one", sans-serif;
+  font-family: "Fredoka-one-woff2", "Fredoka-one", "Fredoka-one-ttf", sans-serif;
   margin-bottom: 50px;
   position: relative;
   z-index: 2;
@@ -319,7 +435,7 @@
   line-height: 28px;
   color: #333333;
   font-weight: 400;
-  font-family: "Lato", sans-serif;
+  font-family: "Lato-woff2", "Lato", "Lato-ttf", sans-serif;
   text-align: left;
 }
 
@@ -327,7 +443,7 @@
   font-size: 72px;
   color: #333333;
   font-weight: 400;
-  font-family: "Kristi", sans-serif;
+  font-family: "Kristi-woff2", "Kristi", "Kristi-ttf", sans-serif;
   position: absolute;
   bottom: 0;
   right: 565px;
@@ -348,7 +464,7 @@
   letter-spacing: 10px;
   color: #333333;
   font-weight: 400;
-  font-family: "Fredoka-one", sans-serif;
+  font-family: "Fredoka-one-woff2", "Fredoka-one", "Fredoka-one-ttf", sans-serif;
   margin-bottom: 60px;
 }
 
@@ -359,26 +475,29 @@
   line-height: 36px;
   color: #333333;
   font-weight: 700;
-  font-family: "Lato", sans-serif;
+  font-family: "Lato-woff2", "Lato", "Lato-ttf", sans-serif;
   padding-left: 280px;
   margin-bottom: 10px;
 }
 
 .about-block_constructor-slider_list {
-  max-width: 55%;
-  width: 100%;
+  max-width: 70%;
+
+  display: flex;
+  justify-content: center;
 }
 .about-block_constructor-slider_list-ul {
   margin: 0;
   padding: 0;
   margin-bottom: 15px;
-  width: 100%;
+  width: 950px;
   display: flex;
   flex-direction: column;
 }
 
 .about-block_constructor-slider_list :last-child {
   margin-bottom: 0;
+  z-index: 1;
 }
 
 .about-block_constructor-slider_list-item {
@@ -415,7 +534,7 @@
   background-color: transparent;
   font-size: 24px;
   color: #080808;
-  font-family: "Lato", sans-serif;
+  font-family: "Lato-woff2", "Lato", "Lato-ttf", sans-serif;
   cursor: pointer;
   outline: none;
   top: 10px;
@@ -444,13 +563,14 @@
   border: 1px solid;
   font-size: 25px;
   color: #ffffff;
-  font-family: "Fredoka-one", sans-serif;
+  font-family: "Fredoka-one-woff2", "Fredoka-one", "Fredoka-one-ttf", sans-serif;
   outline: none;
 }
 
-.cart-checkout-button:hover {
-  background-color: #fff;
-  color: #f76631;
+.cart-checkout-button:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
+  color: #ff4200;
 }
 
 .cart-list-item-header {
@@ -479,7 +599,7 @@
   background-color: #f1eeed;
   font-size: 14px;
   color: #080808;
-  font-family: "Lato", sans-serif;
+  font-family: "Lato-woff2", "Lato", "Lato-ttf", sans-serif;
   cursor: pointer;
   position: absolute;
   outline: none;
@@ -526,7 +646,7 @@
   padding: 0;
   list-style: none;
   color: #f76631;
-  font-family: "Fredoka-one", sans-serif;
+  font-family: "Fredoka-one-woff2", "Fredoka-one", "Fredoka-one-ttf", sans-serif;
 }
 
 .cart-item_list-amount_info {
@@ -540,7 +660,7 @@
 .cart-item_list-amount_info-item {
   margin: 0;
   padding: 0;
-  font-family: "Fredoka-one", sans-serif;
+  font-family: "Fredoka-one-woff2", "Fredoka-one", "Fredoka-one-ttf", sans-serif;
   font-size: 25px;
   color: #333333;
 }
@@ -569,10 +689,10 @@
 
 .constructor-list-item_value {
   font-size: 30px;
-  line-height: 36px;
+  line-height: 30px;
   color: #333333;
 
-  font-family: "Lato", sans-serif;
+  font-family: "Lato-woff2", "Lato", "Lato-ttf", sans-serif;
 }
 
 .constructor-slider_list-button {
@@ -583,7 +703,7 @@
   font-size: 24px;
   color: #ff4200;
   font-weight: 400;
-  font-family: "Fredoka-one", sans-serif;
+  font-family: "Fredoka-one-woff2", "Fredoka-one", "Fredoka-one-ttf", sans-serif;
   cursor: pointer;
   position: relative;
   outline: transparent;
@@ -597,7 +717,7 @@
   font-size: 24px;
   color: #ff4200;
   font-weight: 400;
-  font-family: "Fredoka-one", sans-serif;
+  font-family: "Fredoka-one-woff2", "Fredoka-one", "Fredoka-one-ttf", sans-serif;
   cursor: pointer;
   position: absolute;
   top: 80px;
@@ -627,20 +747,17 @@
 
 .constructor-slider_list-button-add {
   cursor: pointer;
-  margin: 0;
-  padding: 10px;
-  padding-top: 25px;
-  width: 80px;
-  height: 80px;
+  padding-top: 17px;
+  font-size: 36px;
+  color: #ffffff;
   text-align: center;
-  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
   filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.12))
     drop-shadow(0px 6px 3px rgba(0, 0, 0, 0.24));
   background-color: #ff4200;
-  border: 1px solid;
-  font-size: 36px;
-  color: #ffffff;
-  font-family: "Fredoka-one", sans-serif;
+  border: 1px solid #f4f4f4;
   position: relative;
   left: 85%;
 }
@@ -648,25 +765,32 @@
 .constructor-slider_list-button-text {
   cursor: pointer;
   outline: none;
-  padding: 20px 0;
-  border-radius: 40px;
+  padding: 10px 0;
+  border-radius: 30px;
   filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.12))
     drop-shadow(0px 6px 3px rgba(0, 0, 0, 0.24));
   background-color: #ff4200;
   border: 1px solid;
   font-size: 36px;
   color: #ffffff;
-  font-family: "Fredoka-one", sans-serif;
+  font-family: "Fredoka-one-woff2", "Fredoka-one", "Fredoka-one-ttf", sans-serif;
   position: absolute;
   top: -2px;
   right: -44px;
-  width: 350px;
+  width: 280px;
   visibility: visible;
   animation-name: loading-way;
   animation-direction: normal;
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-iteration-count: 1;
+}
+
+.constructor-slider_list-button-text:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
+  color: #ff4200;
+  background-color: #fff;
 }
 
 .constructor-slider_list-button::after {
@@ -721,7 +845,7 @@
   font-size: 16px;
   letter-spacing: 1px;
   color: #ffffff;
-  font-family: "Fredoka-one", sans-serif;
+  font-family: "Fredoka-one-woff2", "Fredoka-one", "Fredoka-one-ttf", sans-serif;
   margin-bottom: 44px;
   position: relative;
 }
@@ -775,7 +899,16 @@
   letter-spacing: 0px;
   line-height: 25px;
   color: #ffffff;
-  font-family: "Lato", sans-serif;
+  font-family: "Lato-woff2", "Lato", "Lato-ttf", sans-serif;
+  display: block;
+}
+
+.contact-item_phone-text:hover {
+  color: #e6d6d6;
+}
+
+.contact-item_share-list_link:hover {
+  color: rgb(236, 226, 226);
 }
 
 .contact-item_phone-text {
@@ -843,9 +976,12 @@ input[type="range"] {
   width: 60%;
   height: 4px;
   background-color: #00a651;
-  margin-right: 100px;
-  cursor: pointer;
+  margin-right: 90px;
+  cursor: grab;
   outline: none;
+}
+input[type="range"].corn {
+  cursor: text;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -886,7 +1022,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   width: 60%;
   height: 2px;
   background-color: #00a651;
-  margin-right: 100px;
+  margin-right: 90px;
   outline: none;
 }
 
@@ -897,7 +1033,7 @@ input[type="range"]::-ms-track {
   width: 60%;
   height: 2px;
   background-color: #00a651;
-  margin-right: 100px;
+  margin-right: 90px;
   outline: none;
 }
 
@@ -928,15 +1064,8 @@ input[type="range"]::-moz-range-track {
     width: 100%;
   }
 
-  .taste-it-block_header {
-    display: none;
-  }
   .cart {
     min-width: 770px;
-  }
-
-  .about-block-img {
-    display: none;
   }
 
   .taste-it-block_header-title {
@@ -944,16 +1073,13 @@ input[type="range"]::-moz-range-track {
     max-width: 450px;
   }
   .taste-it-block_button {
-    left: 50%;
+    left: 70%;
     margin-bottom: 50px;
   }
   .about-block_constructor-slider_list {
     max-width: 80%;
   }
-  .about-block_text,
-  .about-block_title {
-    display: none;
-  }
+
   .taste-it-block_header-title {
     padding-left: 0;
   }
@@ -967,17 +1093,26 @@ input[type="range"]::-moz-range-track {
     max-width: 992px;
     width: 100%;
   }
-
-  .taste-it-block_header-title {
+  .taste-it-block_header {
     margin-bottom: 50px;
+  }
+
+  .taste-it-block {
+    padding-bottom: 100px;
   }
 
   .taste-it-block_button {
     font-size: 28px;
     padding: 8px 20px;
     margin-bottom: 0;
+    left: 70%;
+    width: 170px;
+    height: 60px;
   }
 
+  .header-cart_total-price {
+    max-width: 75px;
+  }
   .about-block_constructor-slider_list {
     max-width: 90%;
   }
@@ -987,8 +1122,8 @@ input[type="range"]::-moz-range-track {
   }
 
   .constructor-list-item_value {
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 14px;
+    line-height: 14px;
   }
   .footer-block {
     min-height: 600px;
@@ -1000,7 +1135,9 @@ input[type="range"]::-moz-range-track {
     max-width: 767px;
     width: 100%;
   }
-
+  .about-block_constructor-slider_list-ul {
+    width: 500px;
+  }
   .header-cart_total-price {
     display: none;
   }
@@ -1047,6 +1184,10 @@ input[type="range"]::-moz-range-track {
   .wrapper {
     max-width: 480px;
   }
+  .about-block_constructor-slider_list-ul {
+    width: 300px;
+  }
+
   .header-logo {
     display: none;
   }

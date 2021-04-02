@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { getTotalPrice } from "../redux/selectors/cart";
+import { NavLink } from "react-router-dom";
 import soybean from "../img/icon/soybean.png";
 import sesame from "../img/icon/sesame.png";
 import wheat from "../img/icon/wheat.png";
@@ -12,21 +13,18 @@ function HeaderComponent() {
   const products = useSelector((state) => state.products);
   const price = useSelector(getTotalPrice);
 
-  
-
   return (
     <div className="header-container">
-      <div className="header-logo">
-        <h2 className="header-logo_text">Cracker</h2>
-        <div className="header-logo_icon">logo</div>
-      </div>
       <div className="header-cart">
-        <div onClick={() => setShowCart(!showCart)} className="header-cart_logo">
+        <div
+          onClick={() => setShowCart(!showCart)}
+          className="header-cart_logo"
+        >
           <p className="header-cart_logo-count">{products.length}</p>
         </div>
         <p className="header-cart_total-price">
-          <span className="header-cart_total-price_text">TOTAL :</span> {Math.round(price*100)/100}{" "}
-          &#8364;
+          <span className="header-cart_total-price_text">TOTAL :</span>{" "}
+          {Math.round(price * 100) / 100} &#8364;
         </p>
         <div className="header-cart_details-block">
           <p
@@ -37,7 +35,6 @@ function HeaderComponent() {
           </p>
           {showCart && (
             <div className="cart">
-                
               <button
                 onClick={() => setShowCart(!showCart)}
                 className="cart-button-close"
@@ -51,17 +48,31 @@ function HeaderComponent() {
                   <img src={wheat} alt="" className="cart-list-icon"></img>
                   <img src={corn} alt="" className="cart-list-icon"></img>
                 </li>
-                {products.length===0 && <p className="cart-item_list-amount_info-item">Your cart is empty, go and buy something</p>}
+                {products.length === 0 && (
+                  <p className="cart-item_list-amount_info-item">
+                    Your cart is empty, go and buy something
+                  </p>
+                )}
                 {products &&
                   products.map((product) => (
                     <CartItem key={product.id} item={product} />
-                  )) }
+                  ))}
               </ul>
               <div className="cart-total">
                 <p className="cart-item_list-amount_info-item">
-                  TOTAL : {Math.round(price*100)/100} &#8364;
+                  TOTAL : {Math.round(price * 100) / 100} &#8364;
                 </p>
-                <button className="cart-checkout-button">CHECKOUT</button>
+                <button
+                  className="cart-checkout-button"
+                  onClick={() => setShowCart(!showCart)}
+                >
+                  <NavLink
+                    className="taste-it-block_nav-list_item-link"
+                    to="/checkout"
+                  >
+                    CHECKOUT
+                  </NavLink>
+                </button>
               </div>
             </div>
           )}

@@ -5,18 +5,14 @@ import AboutBlock from './containers/AboutBlock'
 import FooterContainer from './containers/FooterContainer'
 import HeaderApp from './containers/HeaderApp'
 import TasteBlock from './containers/TasteBlock'
+import Routes from './Routes';
 
 const store = createStore()
 
 function CrackerApp() {
     return (
         <Provider store={store}>
-        <div className="wrapper">
-            <HeaderApp/>
-            <TasteBlock/>
-            <AboutBlock/>
-            <FooterContainer/>
-        </div>
+            <Routes/>
         </Provider>
 
     )

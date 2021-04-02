@@ -7,11 +7,11 @@ function AboutComponent() {
   const price = useSelector(getTotalPrice);
 
   return (
-    <div className="about-component">
+    <article className="about-component">
       <h2 className="about-block_title">ABOUT CRACKER</h2>
       <div className="about-block-img"></div>
       <p className="about-block_text">
-        <span className="about-block_text-text">
+        <article className="about-block_text-text">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute
           irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
@@ -22,7 +22,7 @@ function AboutComponent() {
           quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
           adipisci velit, sed quia non numquam eius modi tempora incidunt ut
           labore et dolore magnam aliquam quaerat voluptatem.
-        </span>
+        </article>
         <span className="about-block_text-after">Cracker</span>
       </p>
       <div className="about-block_constructor-block">
@@ -32,7 +32,7 @@ function AboutComponent() {
         </p>
         <AboutConstructor />
       </div>
-    </div>
+    </article>
   );
 }
 
